@@ -6,9 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Http\Controllers\Post\BaseController;
 use Illuminate\Http\Request;
 
-class EditController extends Controller
+class EditController extends BaseController
 {
     /**
      * Handle the incoming request.

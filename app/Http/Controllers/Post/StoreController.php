@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Http\Controllers\Post\BaseController;
 use Illuminate\Http\Request;
 
-class StoreController extends Controller
+class StoreController extends BaseController
 {
     /**
      * Handle the incoming request.
@@ -21,15 +22,7 @@ class StoreController extends Controller
             'tags' => '',
         ]);
 
-
-        $tags = $data['tags'] ?? [];
-        unset($data['tags']);
-        // dd($tags, $data);
-
-        $post = Post::create($data);
-
-        $post->tags()->attach($tags);
-
+        $this->service->store($data);
 
         return redirect()->route('post.index');
     }
