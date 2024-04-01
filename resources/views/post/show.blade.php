@@ -21,14 +21,16 @@
         <a href="{{ route('post.edit', $post) }}">To edit</a>
     </div>
     <br>
-    <div>
-        <!-- <form-action="{{ route('post.destroy', $post) }}" method="POST"> -->
+    
+    @auth
+    <div>    
         <form action="{{ route('post.destroy', $post->id) }}" method="POST">
             @csrf
             @method('DELETE')
         <input type="submit" value="To delete" class="btn btn-danger">
-        </form>
+        </form>   
     </div>
+    @endauth
 <br>
     <div>
         <a href="{{ route('post.index') }}">Back</a>

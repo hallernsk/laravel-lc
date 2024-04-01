@@ -45,9 +45,6 @@ Route::group(['namespace' => 'App\Http\Controllers\Post'], function () {
 // Route::get('/posts/update/{id}', [PostController::class, 'update']);
 // Route::get('/posts/delete/{id}', [PostController::class, 'delete']);
 
-Route::get('/about', [AboutController::class, 'index'])->name('about.index');
-Route::get('/contacts', [ContactsController::class, 'index'])->name('contact.index');
-
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

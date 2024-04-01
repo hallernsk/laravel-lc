@@ -41,7 +41,9 @@
 
         <div class="col text-end">
             <br>
+            @auth
             <a href="{{ route('post.create') }}" class="btn btn-primary" >Create Post</a>
+            @endauth
         </div>
 
 

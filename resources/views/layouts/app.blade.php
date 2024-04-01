@@ -21,7 +21,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Blog') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -31,7 +31,12 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
 
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{{ route('post.index') }}"> Posts </a>
+                        </li>
+
                     </ul>
+
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -71,7 +76,11 @@
                 </div>
             </div>
         </nav>
-
+        @guest
+        <div class="container">
+        Registration is required to create and delete posts!
+        </div>
+        @endguest
         <main class="py-4">
             @yield('content')
         </main>
