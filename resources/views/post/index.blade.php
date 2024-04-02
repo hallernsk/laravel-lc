@@ -2,9 +2,10 @@
 
 @section('content')
     <main class="container">
-    <h1 class=" mb-5">Posts</h1>
-        <div class="w-full flex">
-            <div>
+    <h3> <p class="text-primary">Posts</p></h3>
+
+    <div class="w-full flex">
+        <div>
 
 
   

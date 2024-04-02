@@ -13,6 +13,7 @@ use App\Http\Controllers\Post\UpdateController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\IsAdminMiddleware;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -27,7 +28,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Post'], function () {
     Route::get('/posts/create', CreateController::class)->name('post.create');
     Route::post('/posts/store', StoreController::class)->name('post.store');
     Route::get('/posts/{post}', ShowController::class)->name('post.show');
-    Route::get('/posts/{post}/edit', EditController::class)->name('post.edit');
+    Route::get('/posts/{post}/edit', EditController::class)->middleware(IsAdminMiddleware::class)->name('post.edit');
     Route::patch('/posts/{post}', UpdateController::class)->name('post.update');
     Route::delete('/posts/{post}', DestroyController::class)->name('post.destroy');
 
@@ -47,5 +48,6 @@ Route::group(['namespace' => 'App\Http\Controllers\Post'], function () {
 
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']); // ??
+// Route::get('/', [App\Http\Controllers\Post\IndexController::class]);

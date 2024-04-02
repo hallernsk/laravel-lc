@@ -32,7 +32,7 @@
                     <ul class="navbar-nav me-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('post.index') }}"> Posts </a>
+                            <a class="nav-link text-primary" href="{{ route('post.index') }}"> Posts </a>
                         </li>
 
                     </ul>
@@ -78,7 +78,7 @@
         </nav>
         @guest
         <div class="container">
-        Registration is required to create and delete posts!
+        <p class="text-danger">Registration is required to create and delete posts!</p>
         </div>
         @endguest
         <main class="py-4">

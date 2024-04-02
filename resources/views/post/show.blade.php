@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-<h1>Post</h1>
+<h3><p class="text-primary">Post</p></h3>
 
 
     <div><h5>ID: </h5></div>
@@ -18,7 +18,7 @@
     <div>{{ $post->likes }}</div><br>
 
     <div>
-        <a href="{{ route('post.edit', $post) }}">To edit</a>
+        <a class="text-info" href="{{ route('post.edit', $post) }}">To edit</a>
     </div>
     <br>
     
