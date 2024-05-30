@@ -24,7 +24,7 @@
     
     @auth
     <div>    
-        <form action="{{ route('post.destroy', $post->id) }}" method="POST">
+        <form action="{{ route('post.destroy', $post) }}" method="POST">
             @csrf
             @method('DELETE')
         <input type="submit" value="To delete" class="btn btn-danger">

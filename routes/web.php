@@ -19,6 +19,11 @@ use App\Http\Middleware\IsAdminMiddleware;
 //     return view('welcome');
 // });
 
+Route::get('/', function () {
+    // \App\Jobs\SendMessage::dispatch('TEST QUEUE MESSAGE'); //  отправка задачи в очередь (для маршрута '/')
+    // \App\Jobs\SendMessage::dispatch('TEST QUEUE MESSAGE')->delay(now()->addMinutes(1)); //  ... с задержкой на 1 минуту
+});
+
 // Route::get('/', [PostController::class, 'index'])->name('post.index');
 
 // Route::get('/test', [MyPlaceController::class, 'index']);
@@ -28,7 +33,9 @@ Route::group(['namespace' => 'App\Http\Controllers\Post'], function () {
     Route::get('/posts/create', CreateController::class)->name('post.create');
     Route::post('/posts/store', StoreController::class)->name('post.store');
     Route::get('/posts/{post}', ShowController::class)->name('post.show');
-    Route::get('/posts/{post}/edit', EditController::class)->middleware(IsAdminMiddleware::class)->name('post.edit');
+    Route::get('/posts/{post}/edit', EditController::class)->name('post.edit');
+    // проверка использования middleware (пропускает к редактированию только админа):
+    // Route::get('/posts/{post}/edit', EditController::class)->middleware(IsAdminMiddleware::class)->name('post.edit');
     Route::patch('/posts/{post}', UpdateController::class)->name('post.update');
     Route::delete('/posts/{post}', DestroyController::class)->name('post.destroy');
 
@@ -48,6 +55,6 @@ Route::group(['namespace' => 'App\Http\Controllers\Post'], function () {
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); ///////////////////////
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']); // ??
 // Route::get('/', [App\Http\Controllers\Post\IndexController::class]);

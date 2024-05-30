@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Http\Controllers\Post\BaseController;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class IndexController extends BaseController
 {
@@ -15,6 +16,15 @@ class IndexController extends BaseController
      */
     public function __invoke(Request $request)
     {
+        // проверка использования redis (для кеширования)
+        // $posts = Cache::rememberForever('posts:all', function () {
+        //     return Post::all();
+        // });
+        // $posts = Cache::get('posts:all');
+        // dd($posts->pluck('title'));
+
+
+
         $title = $request->query('title');
         // dd($title);
         $content = $request->query('content');

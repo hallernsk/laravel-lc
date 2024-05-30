@@ -16,6 +16,7 @@ class EditController extends BaseController
      */
     public function __invoke(Request $request, Post $post)
     {
+        // dd($post->id);
         $categories = Category::all();
         $tags = Tag::all();
         return view('post.edit', ['post' => $post, 'categories' => $categories, 'tags' => $tags]);

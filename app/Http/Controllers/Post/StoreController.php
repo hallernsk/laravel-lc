@@ -14,7 +14,7 @@ class StoreController extends BaseController
      */
     public function __invoke(Request $request)
     {
-        dd('postman-StoreController');
+        // dd('postman-StoreController');
         $data = request()->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string|min:10',
