@@ -14,12 +14,26 @@ use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\IsAdminMiddleware;
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/{param}', function (Request $request, $param) {
+    return $request->method();
+    return $param;
+});
+
+Route::get('/test', function (Request $request) {
+    dd('222');
+    dd($request->header('user-agent'));
+    dd($request->method());
+    // dd($request->ip());
+    // dd($request->server('REQUEST_URI'));
+    // dd($request->session()->all());
+    // dd($request->cookie('laravel_session'));
+    // dd($request->cookie('laravel_session'));
     // \App\Jobs\SendMessage::dispatch('TEST QUEUE MESSAGE'); //  отправка задачи в очередь (для маршрута '/')
     // \App\Jobs\SendMessage::dispatch('TEST QUEUE MESSAGE')->delay(now()->addMinutes(1)); //  ... с задержкой на 1 минуту
 });
